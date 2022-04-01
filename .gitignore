@@ -24,3 +24,6 @@ yarn-error.log*
 
 #ignore all javascript
 *.js
+
+#ignore vs esproj user file
+*esproj.user
