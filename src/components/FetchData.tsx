@@ -16,6 +16,12 @@ export class FetchData extends Component<{}, IForcecastFetchState> {
     }
 
     static renderForecastsTable(forecasts: IForecast[]) {
+        const convertISOStringToMonthDay = (date: string) => {
+            const tempDate = new Date(date).toString().split(' ');
+            const formattedDate = `${tempDate[1]} ${+tempDate[2]}`;
+            return formattedDate;
+        };
+
         return (
             <table className='table table-striped' aria-labelledby="tabelLabel">
                 <thead>
@@ -29,7 +35,7 @@ export class FetchData extends Component<{}, IForcecastFetchState> {
                 <tbody>
                     {forecasts.map(forecast =>
                         <tr key={forecast.date}>
-                            <td>{forecast.date}</td>
+                            <td>{convertISOStringToMonthDay(forecast.date)}</td>
                             <td>{forecast.temperatureC}</td>
                             <td>{forecast.temperatureF}</td>
                             <td>{forecast.summary}</td>
@@ -64,6 +70,9 @@ export class FetchData extends Component<{}, IForcecastFetchState> {
             this.setState({ forecasts: [], loading: false });
         }
     }
+
+    
+
 }
 
 export interface IForcecastFetchState
