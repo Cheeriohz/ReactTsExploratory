@@ -6,12 +6,14 @@ import logo from './logo.svg';
 import './App.css';
 import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
+import { TemperatureQuery } from './components/TemperatureQuery';
 
 function App() {
     return (
         <Layout>
             <Routes>
                 <Route path='/' element={<Home />} />
+                <Route path='/temperature-query' element={<TemperatureQuery />} />
                 <Route path='/counter' element={<Counter />} />
                 <Route path='/fetch-data' element={<FetchData />} />
             </Routes>
